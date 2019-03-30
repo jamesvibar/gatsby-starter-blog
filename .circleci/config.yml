@@ -61,6 +61,23 @@ jobs:
       - store_artifacts:
           path: cypress/screenshots
 
+  e2e_cypress:
+    <<: *e2e-executor
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - <<: *install_node_modules
+      - <<: *save_cache
+      - run:
+          name: Run E2E Tests
+          command: yarn test:e2e
+      - <<: *store_results
+      - <<: *store_results_artifacts
+      - store_artifacts:
+          path: cypress/videos
+      - store_artifacts:
+          path: cypress/screenshots
+
 workflows:
   version: 2
   lint-test:
