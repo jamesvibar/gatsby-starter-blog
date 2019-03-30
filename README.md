@@ -11,6 +11,10 @@
   Gatsby's blog starter
 </h1>
 
+    "cy:run": "CYPRESS_baseUrl=http://localhost:9000 cypress run --browser chrome --reporter junit --reporter-options 'mochaFile=results/cypress/result.xml'",
+    "serve-and-run": "start-server-and-test serve http://localhost:9000 cy:run",
+    "test:e2e": "cross-env CYPRESS_SUPPORT=y yarn build && yarn serve-and-run"
+
 Kick off your project with this blog boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
 
 _Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
